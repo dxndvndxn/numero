@@ -1,0 +1,41 @@
+.header {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  z-index: 9999;
+}
+
+.nav {
+  padding: 46px 50px 0;
+  @extend %fl-bet;
+}
+
+.nav__logo {
+  max-width: 308px;
+  width: 100%;
+  padding-right: 30px;
+}
+
+.nav__left {
+  display: flex;
+  width: 100%;
+}
+
+.nav__list {
+  @extend %fl-bet;
+  list-style: none;
+  font-size: $medium;
+  padding: 0;
+  margin: 0;
+}
+
+.nav__link {
+  text-decoration: none;
+  color: #fff;
+  @include font(700);
+  text-transform: uppercase;
+}
+
+.nav__item {
+  margin-right: 55px;
+}
