@@ -2,3 +2,10 @@
   font-family: Montserrat, sans-serif;
   font-weight: $weight;
 }
+
+@mixin fl($where) {
+  display: flex;
+  @if $where == cen {
+
+  }
+}

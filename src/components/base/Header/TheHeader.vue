@@ -14,19 +14,17 @@
         </ul>
       </div>
 
-      <div class="nav__right">
-        <HeaderBurger/>
-      </div>
+     <HeaderNavigation/>
     </nav>
   </header>
 </template>
 
 <script>
-import HeaderBurger from "@/components/base/Header/HeaderBurger";
+import HeaderNavigation from "@/components/base/Header/TheHeaderNavigation";
 export default {
   name: "Header",
   components: {
-    HeaderBurger
+    HeaderNavigation,
   },
   data: () => ({
     menuList: [

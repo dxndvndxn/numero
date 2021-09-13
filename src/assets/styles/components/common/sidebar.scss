@@ -1,0 +1,50 @@
+.sidebar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: calc(100% - 86px);
+  padding: 46px 51px 40px 25px;
+  width: 60%;
+  background: $black;
+  overflow-x: hidden;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+
+  .nav__right {
+    margin: 0 0 80px auto;
+  }
+}
+
+.sidebar__main {
+  color: #fff;
+  @include font(700);
+  font-size: 70px;
+  margin-bottom: 35px;
+  height: 100%;
+}
+
+.__panel {
+  scroll-behavior: auto !important;
+}
+.__vuescroll {
+  margin-bottom: 35px;
+}
+.sidebar__item {
+  margin-bottom: 15px;
+}
+
+.sidebar__link, .sidebar__bottom-link {
+  color: #fff;
+}
+
+.sidebar__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  @include font(500);
+}
+
+.sidebar__bottom-link {
+  margin-right: 30px;
+}

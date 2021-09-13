@@ -9,8 +9,12 @@
 @import "base/mixins";
 
 // Components
+@import "components/common/iconn";
 @import "components/common/burger";
+@import "components/common/lang";
+@import "components/common/cart";
 @import "components/common/header";
+@import "components/common/sidebar";
 
 // Views
 @import "views/home";
