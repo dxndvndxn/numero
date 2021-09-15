@@ -1,6 +1,6 @@
 <template>
   <div class="sidebar">
-    <HeaderNavigation/>
+    <HeaderNavigation @showSideBar="setSidebarShow(false)" :isBurgerActive="true"/>
 
     <vuescroll :ops="scrollOptions">
       <ul class="sidebar__main">
@@ -21,8 +21,8 @@
         </li>
       </ul>
 
-      <span>
-        <router-link to="#" class="sidebar__bottom-link link-under"> Contributors</router-link>
+      <span class="sidebar__bottom-item">
+        <router-link to="#" class="sidebar__bottom-link link-under">Contributors</router-link>
       </span>
     </div>
   </div>
@@ -30,6 +30,7 @@
 
 <script>
 import HeaderNavigation from "@/components/base/Header/TheHeaderNavigation"
+import { mapMutations } from 'vuex'
 export default {
   name: "TheHeaderBar",
   components: {
@@ -93,7 +94,7 @@ export default {
         mode: 'native',
       },
       scrollPanel: {
-        speed: 50,
+        speed: 150,
         scrollingY: true,
         scrollingX: false
       },
@@ -107,7 +108,10 @@ export default {
         minSize: 0
       }
     }
-  })
+  }),
+  methods: {
+    ...mapMutations(['setSidebarShow'])
+  }
 }
 </script>
 

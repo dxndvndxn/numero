@@ -14,16 +14,24 @@
         </ul>
       </div>
 
-     <HeaderNavigation/>
+     <HeaderNavigation @showSideBar="setSidebarShow(true)" :isBurgerActive="false"/>
     </nav>
+    <transition @enter="sidebarAppear" @leave="sidebarDisappear">
+      <TheHeaderBar id="sidebar" v-if="getSidebarShow"/>
+    </transition>
   </header>
 </template>
 
 <script>
 import HeaderNavigation from "@/components/base/Header/TheHeaderNavigation";
+import TheHeaderBar from "@/components/base/Header/TheHeaderBar";
+import { mapMutations, mapGetters } from 'vuex'
+import gsap from "gsap"
+
 export default {
   name: "Header",
   components: {
+    TheHeaderBar,
     HeaderNavigation,
   },
   data: () => ({
@@ -48,8 +56,57 @@ export default {
         name: 'Cinema & Series',
         link: '#'
       }
-    ]
-  })
+    ],
+    timeLine: null
+  }),
+  computed: {
+    ...mapGetters(['getSidebarShow'])
+  },
+  methods: {
+    ...mapMutations(['setSidebarShow']),
+    sidebarAppear(el, done) {
+      this.sidebarAnimate(el, done)
+    },
+    sidebarDisappear(el, done) {
+      this.timeLine.reverse().then(() => done())
+    },
+    sidebarAnimate(sidebar, done) {
+      const sidebarMenuItems = document.querySelectorAll('.sidebar__item')
+      const sidebarMenuNavigations = document.querySelectorAll('.sidebar .nav__right .icon')
+      const sidebarMenuBottom = document.querySelectorAll('.sidebar__bottom-item')
+      this.timeLine = gsap.timeline()
+
+      // Появление меню
+      let tweenSidebar = gsap.fromTo(
+          sidebar,
+          { right: '-100%' },
+          { right: 0, duration: .5, ease: "Expo.easeInOut" }
+      )
+      this.timeLine.add(tweenSidebar)
+
+      // Появление элементов навигации
+      let tweenNavigation = this.timeLine.fromTo(
+          sidebarMenuNavigations,
+          { opacity: 0 },
+          { opacity: 1, duration: .5, ease: "Power3.easeInOut", delay: .2, stagger: 0.1 },
+          '<'
+      )
+      this.timeLine.add(tweenNavigation)
+
+      // Появление элементов меню
+      let tweenMenuItems = this.timeLine.fromTo(
+          [...sidebarMenuItems, ...sidebarMenuBottom],
+          { y: 100, opacity: 0 },
+          { y: 0, opacity: 1, duration: .9, ease: "Expo.easeInOut", stagger: 0.1 },
+          ">-1"
+      )
+
+      this.timeLine.add(tweenMenuItems)
+        .then(() => {
+          done()
+        })
+    }
+  },
 }
 </script>
 

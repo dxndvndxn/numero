@@ -2,17 +2,24 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: calc(100% - 86px);
+  height: calc(100vh - 86px);
   padding: 46px 51px 40px 25px;
   width: 60%;
   background: $black;
-  overflow-x: hidden;
+  overflow: hidden;
   z-index: 9999;
   display: flex;
   flex-direction: column;
 
   .nav__right {
     margin: 0 0 80px auto;
+  }
+
+  .__panel {
+    scroll-behavior: auto !important;
+  }
+  .__vuescroll {
+    margin-bottom: 35px;
   }
 }
 
@@ -24,12 +31,6 @@
   height: 100%;
 }
 
-.__panel {
-  scroll-behavior: auto !important;
-}
-.__vuescroll {
-  margin-bottom: 35px;
-}
 .sidebar__item {
   margin-bottom: 15px;
 }
