@@ -2,50 +2,120 @@
   position: absolute;
   right: 0;
   top: 0;
-  height: calc(100vh - 86px);
+  height: 100vh;
   padding: 46px 51px 40px 25px;
-  width: 60%;
+  width: 100%;
   background: $black;
   overflow: hidden;
   z-index: 9999;
   display: flex;
   flex-direction: column;
-
-  .nav__right {
-    margin: 0 0 80px auto;
-  }
+  box-sizing: border-box;
 
   .__panel {
     scroll-behavior: auto !important;
   }
-  .__vuescroll {
-    margin-bottom: 35px;
+
+  .nav__logo {
+    margin-left: 5px;
   }
 }
 
 .sidebar__main {
   color: #fff;
   @include font(700);
-  font-size: 70px;
-  margin-bottom: 35px;
+  font-size: 100px;
   height: 100%;
 }
 
 .sidebar__item {
   margin-bottom: 15px;
+  position: relative;
+  z-index: 99999;
+}
+
+.sidebar__link-wrap {
+  z-index: 99999;
 }
 
 .sidebar__link, .sidebar__bottom-link {
   color: #fff;
 }
 
+.sidebar__link {
+  position: relative;
+  transition: all .3s ease-in-out;
+
+  &:before {
+    position: absolute;
+    bottom: -5px;
+    content: '';
+    background-color: #ffffff;
+    width: 0;
+    height: 6px;
+    transition: all .3s ease-in-out;
+  }
+
+  &:hover {
+    &:before {
+      width: 100%;
+    }
+  }
+}
+
+.sidebar__link_hover {
+  opacity: .5 !important;
+}
+
 .sidebar__bottom {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+  justify-content: flex-end;
+  position: relative;
   @include font(500);
+}
+
+.sidebar__bottom-list {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
+.sidebar__top {
+  margin-bottom: 80px;
 }
 
 .sidebar__bottom-link {
   margin-right: 30px;
+}
+
+.sidebar__bottom-item {
+  margin-bottom: 15px;
+  text-align: right;
+}
+
+.sidebar__wrap {
+  display: flex;
+  overflow: hidden;
+}
+
+
+.sidebar__link-img {
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  width: 0;
+  max-height: 700px;
+  height: 100vh;
+}
+
+.sidebar__link-img-wrap {
+  position: fixed;
+  width: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  z-index: -1;
 }

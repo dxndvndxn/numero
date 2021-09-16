@@ -73,6 +73,7 @@ export default {
     sidebarAnimate(sidebar, done) {
       const sidebarMenuItems = document.querySelectorAll('.sidebar__item')
       const sidebarMenuNavigations = document.querySelectorAll('.sidebar .nav__right .icon')
+      const sidebarLogo = document.querySelectorAll('.sidebar .nav__logo')
       const sidebarMenuBottom = document.querySelectorAll('.sidebar__bottom-item')
       this.timeLine = gsap.timeline()
 
@@ -86,7 +87,7 @@ export default {
 
       // Появление элементов навигации
       let tweenNavigation = this.timeLine.fromTo(
-          sidebarMenuNavigations,
+          [...sidebarMenuNavigations, sidebarLogo],
           { opacity: 0 },
           { opacity: 1, duration: .5, ease: "Power3.easeInOut", delay: .2, stagger: 0.1 },
           '<'
@@ -107,6 +108,9 @@ export default {
         })
     }
   },
+  mounted() {
+    this.setSidebarShow(true)
+  }
 }
 </script>
 
