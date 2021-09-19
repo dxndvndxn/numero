@@ -147,7 +147,7 @@ export default {
         const img = document.querySelector('.sidebar__link-img')
         gsap.to(
             img,
-            { width: 500, duration: 1, ease: "Expo.easeInOut" }
+            { width: 500, duration: .4, ease: "Expo.easeInOut" }
         )
       }, 300)
     },

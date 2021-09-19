@@ -7,13 +7,17 @@
           :info="bannerInfo"
       />
     </div>
-    <div class="shadow"></div>
+    <div class="home__bg">
+      <div class="shadow"></div>
+      <div class="carti"></div>
+    </div>
   </div>
 </template>
 
 <script>
 import TheBannerTitle from "@/components/TheBannerTitle";
 import TheBannerBottom from "@/components/TheBannerBottom";
+import gsap from "gsap"
 export default {
   name: 'Home',
   data: () => ({
@@ -42,6 +46,12 @@ export default {
   components: {
     TheBannerBottom,
     TheBannerTitle
+  },
+  mounted() {
+    const bg = document.querySelector('.home__bg')
+    const carti = document.querySelector('.carti')
+    gsap.fromTo(bg, { opacity: 0 }, { opacity: 1, duration: 1, ease: "Expo.easeInOut"})
+    gsap.fromTo(carti, { backgroundSize: "40% 40%" }, { backgroundSize: "100% 100%", autoRound: false, ease: 'Expo.easeInOut'})
   }
 }
 </script>

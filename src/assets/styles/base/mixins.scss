@@ -1,11 +1,9 @@
 @mixin font($weight) {
-  font-family: Montserrat, sans-serif;
-  font-weight: $weight;
-}
-
-@mixin fl($where) {
-  display: flex;
-  @if $where == cen {
-
+  font-family: 'Neue Haas Grotesk Display Pro', sans-serif;
+  @if $weight == 0 {
+    font-weight: normal;
+  } @else {
+    font-weight: $weight;
   }
 }
+

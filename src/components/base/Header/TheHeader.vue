@@ -60,7 +60,7 @@ export default {
     timeLine: null
   }),
   computed: {
-    ...mapGetters(['getSidebarShow'])
+    ...mapGetters(['getSidebarShow']),
   },
   methods: {
     ...mapMutations(['setSidebarShow']),
@@ -68,7 +68,7 @@ export default {
       this.sidebarAnimate(el, done)
     },
     sidebarDisappear(el, done) {
-      this.timeLine.reverse().then(() => done())
+      this.timeLine.reverse(1).then(() => done())
     },
     sidebarAnimate(sidebar, done) {
       const sidebarMenuItems = document.querySelectorAll('.sidebar__item')
@@ -81,15 +81,15 @@ export default {
       let tweenSidebar = gsap.fromTo(
           sidebar,
           { right: '-100%' },
-          { right: 0, duration: .5, ease: "Expo.easeInOut" }
+          { right: 0, duration: .4, ease: "Expo.easeInOut" }
       )
       this.timeLine.add(tweenSidebar)
 
       // Появление элементов навигации
       let tweenNavigation = this.timeLine.fromTo(
-          [...sidebarMenuNavigations, sidebarLogo],
+          [sidebarLogo, ...sidebarMenuNavigations],
           { opacity: 0 },
-          { opacity: 1, duration: .5, ease: "Power3.easeInOut", delay: .2, stagger: 0.1 },
+          { opacity: 1, duration: .5, ease: "Power3.easeInOut", delay: .1, stagger: 0.1 },
           '<'
       )
       this.timeLine.add(tweenNavigation)
@@ -98,7 +98,7 @@ export default {
       let tweenMenuItems = this.timeLine.fromTo(
           [...sidebarMenuItems, ...sidebarMenuBottom],
           { y: 100, opacity: 0 },
-          { y: 0, opacity: 1, duration: .9, ease: "Expo.easeInOut", stagger: 0.1 },
+          { y: 0, opacity: 1, duration: .6, ease: "Expo.easeInOut", stagger: 0.1 },
           ">-1"
       )
 
@@ -108,9 +108,9 @@ export default {
         })
     }
   },
-  mounted() {
-    this.setSidebarShow(true)
-  }
+  // mounted() {
+  //   this.setSidebarShow(true)
+  // }
 }
 </script>
 
