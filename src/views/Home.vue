@@ -50,8 +50,15 @@ export default {
   mounted() {
     const bg = document.querySelector('.home__bg')
     const carti = document.querySelector('.carti')
+    const title = document.querySelector('.home__title')
+    const infoBottom = document.querySelectorAll('.info-bottom')
+
     gsap.fromTo(bg, { opacity: 0 }, { opacity: 1, duration: 1, ease: "Expo.easeInOut"})
     gsap.fromTo(carti, { backgroundSize: "40% 40%" }, { backgroundSize: "100% 100%", autoRound: false, ease: 'Expo.easeInOut'})
+    gsap.fromTo(title, { opacity: 0, y: 50 }, { opacity: 1, delay: .5, duration: .4, y: 0, ease: 'Power1.easeInOut' })
+    gsap.fromTo([...infoBottom], { opacity: 0, y: 50 }, { stagger: 0.05, opacity: 1, delay: .5, duration: .4, y: 0, ease: 'Power1.easeInOut' })
+
+
   }
 }
 </script>

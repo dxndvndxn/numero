@@ -2,3 +2,16 @@
   color: #ffffff;
   @include font(700);
 }
+
+.lang {
+  &:hover {
+    background-color: #fff;
+    transition: all .3s ease-in-out;
+
+    .lang__switch {
+      background-color: #000;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+    }
+  }
+}

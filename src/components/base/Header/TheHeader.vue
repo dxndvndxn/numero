@@ -106,11 +106,21 @@ export default {
         .then(() => {
           done()
         })
+    },
+    topSideAppear() {
+      const logo = document.querySelector('.nav__logo')
+      const menu = document.querySelectorAll('.nav__item')
+      const navRight = document.querySelectorAll('.nav__right .icon')
+
+      gsap.fromTo(
+          [logo, ...menu, ...navRight],
+          { y: 30, opacity: 0 },
+          { y: 0, opacity: 1, duration: .4, ease: "Power1.easeInOut", stagger: 0.05 })
     }
   },
-  // mounted() {
-  //   this.setSidebarShow(true)
-  // }
+  mounted() {
+    this.topSideAppear()
+  }
 }
 </script>
 

@@ -32,3 +32,16 @@
     transform: translate(-50%, -50%) rotate(-45deg);
   }
 }
+
+.burger {
+  &:hover {
+    transition: all .3s ease-in-out;
+    background-color: #fff;
+
+    .burger__line_first, .burger__line_second  {
+      background-color: #000;
+    }
+  }
+}
+
+
